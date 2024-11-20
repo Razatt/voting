@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Voting</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+        <header>
+            <nav class="navbar">
+                <!-- Popularity on the left -->
+                <a href="#popularity" class="left">Popularity</a>
+        
+                <!-- Links on the right -->
+                <div class="right">
+                    <a href="#welcome">Welcome</a>
+                    <a href="#help">Help</a>
+                    <a href="#settings">Settings</a>
+                </div>
+            </nav>
+        </header>
+        
+    
+    <main>
+        
+
+        <section id="upload-section">
+            <h2>Upload Photos for Comparison</h2>
+            <div>
+              <label for="image-input-1">Photo 1:</label>
+              <input type="file" accept="image/*" id="image-input-1" onchange="updateImage(1)">
+            </div>
+            <div>
+              <label for="image-input-2">Photo 2:</label>
+              <input type="file" accept="image/*" id="image-input-2" onchange="updateImage(2)">
+            </div>
+          </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <section id="photo-comparison">
+            <h1>Choose Your Favorite Photo</h1>
+            <div class="photos">
+                <div class="photo">
+                    <img id="Photo-2" src="https://via.placeholder.com/200" alt="Photo 2">
+                    <button onclick="vote('photo2')">Vote for Photo 2</button>
+                </div>
+                <div class="photo">
+                    <img id="Photo-1" src="https://via.placeholder.com/200" alt="Photo 1">
+                    <button onclick="vote('photo1')">Vote for Photo 1</button>
+
+  
+                    
+                </div>
+            </div>
+            <div class="results">
+                <p>Photo 1 Votes: <span id="photo1-votes">0</span></p>
+                <p>Photo 2 Votes: <span id="photo2-votes">0</span></p>
+            </div>
+        </section>
+        
+        
+        <!-- Comment section starts here -->
+        <section id="comments-section">
+            <h3>Leave a Comment</h3>
+            <form id="comment-form" onsubmit="addComment(event)">
+                <input type="text" id="userName" placeholder="Enter your name" required>
+                <textarea id="comment-input" placeholder="Write your comment here..." required></textarea>
+                <button type="submit">Submit</button>
+            </form>
+            <div id="comments-container">
+                <h3>Comments:</h3>
+                <ul id="comments-list"></ul>
+            </div>
+        
+        </section>
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
