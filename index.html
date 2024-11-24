@@ -1,100 +1,129 @@
 
-<!DOCTYPE html>
+        <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Photo Voting</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photo Voting</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
-        <header>
-            <nav class="navbar">
-                <!-- Popularity on the left -->
-                <a href="#popularity" class="left">Popularity</a>
-        
-                <!-- Links on the right -->
-                <div class="right">
-                    <a href="#welcome">Welcome</a>
-                    <a href="#help">Help</a>
-                    <a href="#settings">Settings</a>
-                </div>
-            </nav>
-        </header>
-        
-    
-    <main>
-        
-
-        <section id="upload-section">
-            <h2>Upload Photos for Comparison</h2>
-            <div>
-              <label for="image-input-1">Photo 1:</label>
-              <input type="file" accept="image/*" id="image-input-1" onchange="updateImage(1)">
-            </div>
-            <div>
-              <label for="image-input-2">Photo 2:</label>
-              <input type="file" accept="image/*" id="image-input-2" onchange="updateImage(2)">
-            </div>
-          </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <section id="photo-comparison">
-            <h1>Choose Your Favorite Photo</h1>
-            <div class="photos">
-                <div class="photo">
-                    <img id="Photo-2" src="https://via.placeholder.com/200" alt="Photo 2">
-                    <button onclick="vote('photo2')">Vote for Photo 2</button>
-                </div>
-                <div class="photo">
-                    <img id="Photo-1" src="https://via.placeholder.com/200" alt="Photo 1">
-                    <button onclick="vote('photo1')">Vote for Photo 1</button>
-
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="#" id="vote-link" class="nav-item special">Vote</a>
+    <div class="nav-links">
+      <a href="#" id="home-link" class="nav-item" onclick="showPage('home')">Home</a>
+      <a href="#" id="help-link" class="nav-item" onclick="showPage('help')">Help</a>
+      <a href="#" id="services-link" class="nav-item" onclick="showPage('services')">Services</a>
+      <a href="#" id="login-link" class="nav-item" onclick="showPage('Login')">Login</a>
+    </div>
+  </nav>
+ 
+   
+  <h1>Vote for Your Favorite Candidate</h1>
+  <div id="candidates">
+    <!-- Buttons for candidates will be added here dynamically -->
+  </div>
   
-                    
-                </div>
-            </div>
-            <div class="results">
-                <p>Photo 1 Votes: <span id="photo1-votes">0</span></p>
-                <p>Photo 2 Votes: <span id="photo2-votes">0</span></p>
-            </div>
-        </section>
-        
-        
-        <!-- Comment section starts here -->
-        <section id="comments-section">
-            <h3>Leave a Comment</h3>
-            <form id="comment-form" onsubmit="addComment(event)">
-                <input type="text" id="userName" placeholder="Enter your name" required>
-                <textarea id="comment-input" placeholder="Write your comment here..." required></textarea>
-                <button type="submit">Submit</button>
-            </form>
-            <div id="comments-container">
-                <h3>Comments:</h3>
-                <ul id="comments-list"></ul>
-            </div>
-        
-        </section>
-        
+  <!-- Content Sections -->
+  <div id="content">
+    <div id="home" class="page active">
+      <h1>Welcome to the Home Page</h1>
+      <div class="container">
+      <p>Welcome to our voting website!We're excited to have you here. Our platform is designed to make voting easy.secure.and accessibleto everyone.
+        With our user-friendly interface. you can cast your votes quickly and confidentiality. We're commited to ensuring the integrityand transparency
+        of every election. and we are proud to be a part of the democratic process.Take a look around and get familiar with our features- we're here to help you make your voice heard!</p>
+      </div>
+    </div>
+    <div id="help" class="page">
+      
+      <h1>Welcome to the Help Page</h1>
+      <div class="container">
+      <p>Need help using our voting website? Don't worry we've got you covered! Our help section is dedicated to answering all your questions and resolving any issues you may encounter. From voting 
+        tutorials to troubleshhoting tips,we've got the resources you need to navigate our platform with ease. If you
+        cannot find what you're looking for, feel free to reach out to our support tram. We are always here to lend a hand .Your vote matters , and we're commited to making sure you cast it with confidence</p>
+      </div>
+    </div>
+    <div id="services" class="page">
+      <h1>Welcome to the Services Page</h1>
+      <div class="container">
+      <p>Our voting website is packed with features to make your voting experience seamless and secure. With our platform, you can:
+      Cast votes quickly and easily
+      View real-time election results
+      Get updates on upcoming elections 
+      learn about candidates and issues
+      Participate in polls and surveys
+      Contact your representatives
+      We're constantly updating and improving our features to ensure that our platform meets the needs of our users.Take a look 
+      around and explore all the ways we're working to make voting easier , more accessible and more secure!></p>
+      </div>
+    </div>
+    <div id="login" class="page">
+      <h1>Login Page</h1>
+      <form id="login-form" onsubmit="handleLogin(event)">
+        <label for="username">Username:</label>
+        <input type="text" id="username" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" required>
+        <button type="submit">Login</button>
+      </form>
+      <p id="login-error" style="color: red; display: none;">Invalid credentials. Please try again.</p>
+    </div>
+    
+  </div>
+  
+  
+  
+  <!-- Main Section -->
+  <main>
+    <section class="upload-section">
+      <h2>Upload and Vote for Your Favorite Photos</h2>
+      <form id="upload-form">
+        <input
+          type="file"
+          id="file-input"
+          accept="image/*"
+          onclick="handleBrowseClick(event)"
+        />
+        <button type="button" id="upload-btn">Upload Image</button>
+      </form>
+    </section>
+    
+  
+    <section class="gallery">
+      <h3>Gallery</h3>
+      <div class="image-container" id="image-container">
+        <!-- Uploaded images with vote buttons will appear here -->
+      </div>
+      <p id="login-reminder" style="color: red; display: none;">Please log in to view the gallery.</p>
+    </section>
+  </main>
+  
+
+  <!-- Footer -->
+  <footer>
+    <div class="location-section">
+      <h2>Your Current Location</h2>
+      <p id="location">Fetching your location...</p>
+    </div>
+    
+    <div class="comment-section">
+      <h2>Leave a Comment</h2>
+      <form id="commentForm" onsubmit="addComment(event)">
+        <textarea id="commentInput" placeholder="Write your comment here..." required></textarea>
+        <button type="submit">Post Comment</button>
+      </form>
+      <div id="commentsContainer" class="comments-container">
+        <h3>Comments:</h3>
+        <!-- User comments will appear here -->
+      </div>
+    </div>
+    
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
 
 
 
