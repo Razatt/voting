@@ -12,60 +12,8 @@ function showPage(pageId) {
   if (activePage) {
     activePage.classList.add('active');
   }
-}let isLoggedIn = false; // Tracks if the user is logged in
-let redirectToPage = null; // Tracks the page to redirect after login
-
-// Function to show a specific page
-function showPage(pageId) {
-  document.querySelectorAll('.page').forEach((page) =>
-    page.classList.remove('active')
-  );
-  document.getElementById(pageId).classList.add('active');
 }
-
-// Handle Login Form Submission
-function handleLogin(event) {
-  event.preventDefault();
-
-  const username = document.getElementById('username').value.trim();
-  const password = document.getElementById('password').value.trim();
-
-  // Simulate login check (replace with real authentication logic)
-  if (username === "user" && password === "password") {
-    isLoggedIn = true;
-    document.getElementById("login-error").style.display = "none";
-
-    // Redirect to the originally intended page
-    if (redirectToPage) {
-      showPage(redirectToPage);
-      redirectToPage = null; // Clear redirect after successful login
-    } else {
-      showPage("home");
-    }
-  } else {
-    document.getElementById("login-error").style.display = "block";
-  }
-}
-
-// Handle Browse Button Click
-function handleBrowseClick(event) {
-  if (!isLoggedIn) {
-    event.preventDefault(); // Prevent the file dialog from opening
-    redirectToPage = "gallery"; // Set the intended page after login
-    showPage("login"); // Redirect to login page
-  }
-}
-
-// Initial Page Load
-showPage("home");
-
-
-
-
-
-
-
-
+    
 
 
 
@@ -90,7 +38,44 @@ function addImageCard(imageSrc) {
   `;
 
   imageContainer.appendChild(card);
+}// Simulate a database for demo purposes
+const votersDatabase = {};
+
+// Function to generate a unique ID
+function generateUniqueId() {
+  return 'id-' + Math.random().toString(36).substr(2, 9);
 }
+
+// Function to add a voter and generate their unique link
+function addVoter(voterName, voterPhoto) {
+  const uniqueId = generateUniqueId();
+  votersDatabase[uniqueId] = { name: voterName, photo: voterPhoto };
+
+  // Generate the unique URL
+  const uniqueUrl = `${window.location.origin}/vote?id=${uniqueId}`;
+
+  // Update the input field with the unique URL
+  const urlField = document.getElementById('unique-url');
+  urlField.value = uniqueUrl;
+
+  // Make the share section visible
+  const shareSection = document.getElementById('share-section');
+  shareSection.style.display = 'block';
+
+  console.log('Voter added:', votersDatabase); // Debugging
+}
+
+// Function to copy the link to the clipboard
+function copyToClipboard() {
+  const urlField = document.getElementById('unique-url');
+  urlField.select();
+  urlField.setSelectionRange(0, 99999); // For mobile devices
+
+  navigator.clipboard.writeText(urlField.value).then(() => {
+    alert('Link copied to clipboard!');
+  });
+}
+
 
 document.getElementById('upload-btn').addEventListener('click', () => {
   const fileInput = document.getElementById('file-input');
@@ -130,6 +115,8 @@ document.getElementById('upload-btn').addEventListener('click', () => {
     alert('Please select an image to upload.');
   }
 });
+
+
 // Function to fetch and display the user's location
 function showLocation() {
   const locationElement = document.getElementById('location');
