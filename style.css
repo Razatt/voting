@@ -1,237 +1,135 @@
-
-  body {
-    font-family: 'Arial', sans-serif;
+/* General Body Styles */
+body {
+    font-family: 'Poppins', sans-serif; /* Modern font */
+    background: linear-gradient(135deg, #ffe8e5, #ffe1dd); /* Light tomato red gradient */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
     margin: 0;
-    padding: 0;
-    background: linear-gradient(to bottom, #f9f9f9, #d0e1f9);
-    color: #333;
-  }
+}
 
-  h1, h2 {
+/* Container Styles */
+.container {
     text-align: center;
-    font-size: 1.5rem; /* Scalable font size */
-  }
+    background: linear-gradient(135deg, #ffffff, #f9f9f9); /* Light polished gradient */
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Deep shadow for a 3D effect */
+    width: 600px; /* Increased width */
+    min-height: 500px; /* Decreased height */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Align content to start */
+    align-items: center;
+}
 
-  /* Navbar Styles */
-  .navbar {
+/* Header Image Styles */
+.header-image {
+    width: 130px; /* Adjust image size to fit new width */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 20px; /* Add space below image */
+    border-radius: 50%; /* Make image circular */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Add shadow */
+}
+
+/* Input Fields */
+input {
+    width: 90%; /* Decrease width for a better layout */
+    padding: 12px;
+    margin: 12px 0;
+    border: 2px solid #ff7f5c; /* Highlighted border */
+    border-radius: 10px;
+    font-size: 16px;
+    background-color: #fffaf5; /* Warm, inviting input background */
+    transition: all 0.3s ease-in-out;
+}
+
+/* Focus effect on input fields */
+input:focus {
+    border-color: #ff6347; /* Tomato red focus */
+    box-shadow: 0 0 10px rgba(255, 99, 71, 0.5); /* Glow effect */
+    outline: none;
+}
+
+/* Button Styles */
+button {
+    background: linear-gradient(90deg, #ff6347, #ff8563); /* Bright tomato red gradient */
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: all 0.3s ease-in-out;
+    width: 180px; /* Increased button width */
+    height: 50px; /* Consistent button height */
+    box-shadow: 0 5px 15px rgba(255, 99, 71, 0.4); /* Attractive shadow */
+}
+
+/* Hover Effect for Buttons */
+button:hover {
+    background: linear-gradient(90deg, #ff8563, #ff6347); /* Reverse gradient on hover */
+    transform: translateY(-3px) scale(1.05); /* Lift and enlarge slightly */
+    box-shadow: 0 8px 20px rgba(255, 99, 71, 0.6); /* Enhanced hover shadow */
+}
+
+/* Align Buttons Horizontally */
+.payment-options {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    background: linear-gradient(45deg, #6a11cb, #2575fc);
-    padding: 10px 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    font-family: 'Arial', sans-serif;
-    border-radius: 8px;
-  }
+    margin: 25px 0;
+    width: 90%; /* Stretch buttons across container */
+}
 
-  .nav-links {
-    display: flex;
-    gap: 10px;
-  }
+.payment-options button {
+    margin: 0 10px; /* Consistent spacing between buttons */
+}
 
-  .nav-item {
-    text-decoration: none;
-    color: #fff;
-    padding: 10px 15px;
-    margin: 0 5px;
-    border-radius: 5px;
-    font-weight: bold;
-    font-size: 0.9rem;
-  }
-
-  .nav-item:hover {
-    background-color: tomato;
-  }
-
-  /* Mobile Navbar */
-  @media (max-width: 768px) {
-    .navbar {
-      flex-direction: column;
-    }
-
-    .nav-links {
-      flex-direction: column;
-      gap: 5px;
-      width: 100%;
-    }
-
-    .nav-item {
-      text-align: center;
-      width: 100%;
-    }
-  }
-
-  /* Content Container */
-  .container {
-    width: 90%;
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-
-  .container p {
-    font-size: 1rem;
-    color: #333;
-  }
-
-  /* Responsive Content Section */
-  .page {
+/* Hidden Class for Conditional Display */
+.hidden {
     display: none;
-    padding: 20px;
-  }
+}
 
-  .page.active {
-    display: block;
-  }
-
-  /* Upload Section */
-  .upload-section, .gallery {
-    width: 90%;
-    margin: 20px auto;
-    padding: 15px;
-    border-radius: 15px;
-    background: #f7f7f7;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
-
-  #file-input {
-    width: 100%;
-    max-width: 300px;
-    margin: 10px auto;
-    padding: 10px;
-    border: 2px dashed #ccc;
-    border-radius: 10px;
-  }
-
-  #upload-btn {
-    width: 100%;
-    max-width: 200px;
-    margin: 10px auto;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    background: linear-gradient(145deg, #6a11cb, #2575fc);
-    color: white;
+/* Message Display */
+#message {
+    margin-top: 20px;
+    font-size: 16px;
+    color: #ff6347; /* Matching tomato red for error */
     font-weight: bold;
-  }
-.image-container {
-  display: flex;
-  flex-wrap: wrap; /* Ensures images wrap to the next line if necessary */
-  gap: 10px;
-  justify-content: center;
-  margin: 0 auto;
 }
 
-.image-container .image-card {
-  position: relative;
-  width: 100%; /* Default width for larger screens */
-  max-width: 150px; /* Limit the width */
-  height: auto; /* Allow height to adjust automatically */
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 8px 8px 16px #c9c9c9, -8px -8px 16px #ffffff;
-  transition: transform 0.3s, box-shadow 0.3s;
+/* Success Message Color */
+#message.success {
+    color: #4caf50; /* Bright green for success */
 }
 
-.image-container .image-card img {
-  width: 100%; /* Scale the image to fit the container */
-  height: auto; /* Maintain aspect ratio */
-  object-fit: cover; /* Ensures the image covers the container without distortion */
-  border-radius: 10px;
+/* Container Heading Styles */
+.container h1 {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 28px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-/* Mobile Specific Styling */
-@media (max-width: 768px) {
-  .image-container .image-card {
-    width: 45%; /* Reduce size for smaller screens */
-    max-width: 120px; /* Further restrict width */
-  }
-
-  .image-container .image-card img {
-    height: auto; /* Automatically adjust height for smaller sizes */
-    object-fit: contain; /* For smaller screens, ensure the full image is visible */
-  }
+/* Form Section Headings */
+.container h2 {
+    margin-bottom: 20px;
+    font-size: 22px;
+    color: #ff6347; /* Vibrant tomato red for headings */
 }
 
-/* Optional Styling for Vote Section */
-.vote-section {
-  background: #fff;
-  padding: 5px;
-  text-align: center;
+/* On Hover Shadow for Input Fields */
+input:hover {
+    box-shadow: 0 0 10px rgba(255, 99, 71, 0.2);
 }
 
-.vote-section button {
-  padding: 5px 10px;
-  background: linear-gradient(145deg, #6a11cb, #2575fc);
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+/* Submit Button Alignment */
+.submit-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
 }
 
-  
-    .vote-section .vote-count {
-      font-size: 0.8em; /* Reduce text size for mobile */
-    }
-  }
-  
-  /* Footer */
-  footer {
-    padding: 20px;
-    background: white;
-    text-align: center;
-  }
-
-  /* Comment Section */
-  .comment-section, .location-section {
-    width: 90%;
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 20px;
-    border-radius: 10px;
-    background: #f5f5f5;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  }
-
-  textarea {
-    width: 100%;
-    font-size: 1rem;
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-  }
-
-  button {
-    padding: 10px 20px;
-    border-radius: 5px;
-    background: #6a11cb;
-    color: white;
-  }
-
-  /* Mobile Responsiveness */
-  @media (max-width: 768px) {
-    h1, h2 {
-      font-size: 1.2rem;
-    }
-
-    .container {
-      width: 100%;
-    }
-
-    #file-input, #upload-btn {
-      width: 90%;
-    }
-
-    .gallery {
-      padding: 10px;
-    }
-
-    .image-container {
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    }
-  }
